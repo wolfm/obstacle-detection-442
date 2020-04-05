@@ -36,10 +36,3 @@ def get_data():
                 # adding entry to the dataset dictionary
                 dataset_dicts.append(record)
     return dataset_dicts
-
-def main():
-    print(123)
-    print(len(get_data()))
-
-if __name__ == "__main__":
-    main()

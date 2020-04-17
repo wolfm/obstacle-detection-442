@@ -1,0 +1,15 @@
+%YAML:1.0
+DataType: StereoMethodParameters
+MethodName: BM
+PreFilterType: 0
+PreFilterSize: 9
+PreFilterCap: 31
+SADWindowSize: 9
+MinDisparity: 0
+NumDisparities: 128
+TextureThreshold: 10
+UniquenessRatio: 15
+SpeckleWindowSize: 100
+SpeckleRange: 32
+TrySmallerWindows: 0
+Disp12MaxDiff: 1

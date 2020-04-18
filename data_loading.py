@@ -2,10 +2,15 @@ from scipy.io import loadmat
 import os
 
 def get_data():
-    dataset_dicts = []
+
+    # dataset_list contains the entire dataset. It is a list of dict, and each dict correspond to each individual training image
+    dataset_list = []
+
     # TODO: change annotation in the next line to the local directory of your annotation data set
     for root,dir,files in os.walk('./annotation/annotationsV2_rectified'):
         if len(root)>64:
+
+            # record is a dict contains info of 1 training image
             record = {}
             annot_dir_path = root
             dir_name_parsed = annot_dir_path.split("\\")[1]
@@ -27,12 +32,27 @@ def get_data():
                 sea_edge = annot['sea_edge'][0, 0]
                 obstacle = annot['obstacles'][0, 0]
 
-                # annotation dictionary
-                # right now just adding bounding boxes for obstacle AND segmentation for sea
-                # all contents are in ndarray
-                obj = {"bbox":obstacle,"segmentation":sea_edge}
-                record["annotation"] = obj
+                # annotation_list contains dict of instance in a training image
+                annotation_list = []
+                if obstacle.shape[0] > 0:
+                    for i in range(obstacle.shape[0]):
+                        bbox = obstacle[i,:]
+                        bbox_mode = "BoxMode.XYWH_ABS"
+
+                        # annotation_instance is a dict that contains info of one instance in one training image
+                        annotation_instance = {"bbox":bbox, "bbox_mode":bbox_mode,"segmentation":sea_edge}
+                        annotation_list.append(annotation_instance)
+
+                record["annotations"] = annotation_list
 
                 # adding entry to the dataset dictionary
-                dataset_dicts.append(record)
-    return dataset_dicts
+                dataset_list.append(record)
+
+    return dataset_list
+
+
+def main():
+    get_data()
+
+if __name__ == "__main__":
+    main()

@@ -1,3 +1,3 @@
 [submodule "Obstacle-Detection-442-Data"]
-	path = Obstacle-Detection-442-Data
+	path = data
 	url = https://github.com/wolfm/Obstacle-Detection-442-Data.git

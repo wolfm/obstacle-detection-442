@@ -1,0 +1,6 @@
+torch==1.4+cu100
+torchvision==0.5+cu100
+cython
+pyyaml==5.1
+pycocotools
+opencv-python

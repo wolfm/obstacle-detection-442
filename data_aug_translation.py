@@ -3,6 +3,7 @@ from scipy.io import loadmat
 import cv2
 import os
 import random
+import pillow
 
 def data_aug():
     # make augmentation folder
@@ -89,6 +90,28 @@ def translation(img,obstacle):
     img = np.roll(img, (row_shift, col_shift), axis=(0, 1))
     return img,bbox
 
+def color_distort(image, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
+    transforms = []
+
+    if 'contrast' in settings:
+        transforms.append(ImageEnhance.Contrast(Image))
+
+    if 'sharpen' in settings:
+        transforms.append(ImageEnhance.Sharpness(image))
+
+    if 'brighten' in setting:
+        transforms.append(ImageEnhance.Brightness(image))
+
+    if 'balance' in settings:
+        transforms.append(ImageEnhance.Color(image))
+
+    transformed_images = []
+
+    for transform in transform:
+        for i in np.linspace(0.1, 1, divisions):
+            transformed_images.append(transform.enhance(i))
+
+    return transformed_images
 
 def main():
     

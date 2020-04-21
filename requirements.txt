@@ -4,3 +4,4 @@ cython
 pyyaml==5.1
 pycocotools
 opencv-python
+pillow

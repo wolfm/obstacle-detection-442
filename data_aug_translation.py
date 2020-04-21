@@ -48,6 +48,24 @@ def data_aug():
     return None
 
 
+def mirror_vertical(image, obstacles):
+    for i, ob in enumerate(obstacles):
+        obstacles[i][1]= image.shape[0] - 1 - ob[1] - ob[3]
+
+    image = np.flip(image, axis=0)
+
+    return image, obstacles
+
+
+def mirror_horizontal(image, obstacles):
+    for i, ob in enumerate(obstacles):
+        obstacles[i][0] = image.shape[1] - 1 - ob[0]-ob[2]
+        
+    image = np.flip(image, axis=1)
+
+    return image, obstacles
+
+
 def translation(img,obstacle):
     row_shift = random.randint(-100,100)
     col_shift = random.randint(-100,100)
@@ -71,9 +89,11 @@ def translation(img,obstacle):
     img = np.roll(img, (row_shift, col_shift), axis=(0, 1))
     return img,bbox
 
+
 def main():
     
     data_aug()
+
 
 if __name__ == "__main__":
     main()

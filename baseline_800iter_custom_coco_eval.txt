@@ -1,0 +1,124 @@
+[04/23 21:29:42 d2.data.common]: Serializing 1605 elements to byte tensors and concatenating them all ...
+[04/23 21:29:42 d2.data.common]: Serialized dataset takes 0.45 MiB
+[04/23 21:29:42 d2.evaluation.evaluator]: Start inference on 1605 images
+[04/23 21:29:44 d2.evaluation.evaluator]: Inference done 11/1605. 0.1698 s / img. ETA=0:04:32
+[04/23 21:29:49 d2.evaluation.evaluator]: Inference done 41/1605. 0.1681 s / img. ETA=0:04:25
+[04/23 21:29:54 d2.evaluation.evaluator]: Inference done 70/1605. 0.1693 s / img. ETA=0:04:22
+[04/23 21:30:00 d2.evaluation.evaluator]: Inference done 100/1605. 0.1697 s / img. ETA=0:04:17
+[04/23 21:30:05 d2.evaluation.evaluator]: Inference done 129/1605. 0.1701 s / img. ETA=0:04:13
+[04/23 21:30:10 d2.evaluation.evaluator]: Inference done 158/1605. 0.1702 s / img. ETA=0:04:08
+[04/23 21:30:15 d2.evaluation.evaluator]: Inference done 187/1605. 0.1710 s / img. ETA=0:04:05
+[04/23 21:30:20 d2.evaluation.evaluator]: Inference done 216/1605. 0.1714 s / img. ETA=0:04:00
+[04/23 21:30:25 d2.evaluation.evaluator]: Inference done 245/1605. 0.1717 s / img. ETA=0:03:55
+[04/23 21:30:30 d2.evaluation.evaluator]: Inference done 274/1605. 0.1722 s / img. ETA=0:03:51
+[04/23 21:30:35 d2.evaluation.evaluator]: Inference done 302/1605. 0.1729 s / img. ETA=0:03:47
+[04/23 21:30:40 d2.evaluation.evaluator]: Inference done 330/1605. 0.1733 s / img. ETA=0:03:43
+[04/23 21:30:45 d2.evaluation.evaluator]: Inference done 358/1605. 0.1737 s / img. ETA=0:03:38
+[04/23 21:30:50 d2.evaluation.evaluator]: Inference done 386/1605. 0.1741 s / img. ETA=0:03:34
+[04/23 21:30:55 d2.evaluation.evaluator]: Inference done 414/1605. 0.1744 s / img. ETA=0:03:29
+[04/23 21:31:00 d2.evaluation.evaluator]: Inference done 442/1605. 0.1747 s / img. ETA=0:03:25
+[04/23 21:31:06 d2.evaluation.evaluator]: Inference done 470/1605. 0.1750 s / img. ETA=0:03:20
+[04/23 21:31:11 d2.evaluation.evaluator]: Inference done 498/1605. 0.1752 s / img. ETA=0:03:15
+[04/23 21:31:16 d2.evaluation.evaluator]: Inference done 526/1605. 0.1754 s / img. ETA=0:03:11
+[04/23 21:31:21 d2.evaluation.evaluator]: Inference done 554/1605. 0.1755 s / img. ETA=0:03:06
+[04/23 21:31:26 d2.evaluation.evaluator]: Inference done 582/1605. 0.1759 s / img. ETA=0:03:01
+[04/23 21:31:31 d2.evaluation.evaluator]: Inference done 610/1605. 0.1760 s / img. ETA=0:02:56
+[04/23 21:31:36 d2.evaluation.evaluator]: Inference done 638/1605. 0.1761 s / img. ETA=0:02:51
+[04/23 21:31:41 d2.evaluation.evaluator]: Inference done 666/1605. 0.1761 s / img. ETA=0:02:47
+[04/23 21:31:46 d2.evaluation.evaluator]: Inference done 694/1605. 0.1762 s / img. ETA=0:02:42
+[04/23 21:31:51 d2.evaluation.evaluator]: Inference done 722/1605. 0.1763 s / img. ETA=0:02:37
+[04/23 21:31:56 d2.evaluation.evaluator]: Inference done 751/1605. 0.1763 s / img. ETA=0:02:31
+[04/23 21:32:01 d2.evaluation.evaluator]: Inference done 779/1605. 0.1763 s / img. ETA=0:02:27
+[04/23 21:32:06 d2.evaluation.evaluator]: Inference done 807/1605. 0.1764 s / img. ETA=0:02:22
+[04/23 21:32:11 d2.evaluation.evaluator]: Inference done 835/1605. 0.1764 s / img. ETA=0:02:17
+[04/23 21:32:16 d2.evaluation.evaluator]: Inference done 863/1605. 0.1765 s / img. ETA=0:02:12
+[04/23 21:32:21 d2.evaluation.evaluator]: Inference done 891/1605. 0.1765 s / img. ETA=0:02:07
+[04/23 21:32:26 d2.evaluation.evaluator]: Inference done 919/1605. 0.1766 s / img. ETA=0:02:02
+[04/23 21:32:31 d2.evaluation.evaluator]: Inference done 947/1605. 0.1766 s / img. ETA=0:01:57
+[04/23 21:32:36 d2.evaluation.evaluator]: Inference done 975/1605. 0.1767 s / img. ETA=0:01:52
+[04/23 21:32:41 d2.evaluation.evaluator]: Inference done 1003/1605. 0.1767 s / img. ETA=0:01:47
+[04/23 21:32:47 d2.evaluation.evaluator]: Inference done 1032/1605. 0.1767 s / img. ETA=0:01:42
+[04/23 21:32:52 d2.evaluation.evaluator]: Inference done 1061/1605. 0.1767 s / img. ETA=0:01:37
+[04/23 21:32:57 d2.evaluation.evaluator]: Inference done 1089/1605. 0.1767 s / img. ETA=0:01:32
+[04/23 21:33:02 d2.evaluation.evaluator]: Inference done 1117/1605. 0.1767 s / img. ETA=0:01:27
+[04/23 21:33:07 d2.evaluation.evaluator]: Inference done 1145/1605. 0.1767 s / img. ETA=0:01:22
+[04/23 21:33:12 d2.evaluation.evaluator]: Inference done 1173/1605. 0.1767 s / img. ETA=0:01:17
+[04/23 21:33:17 d2.evaluation.evaluator]: Inference done 1201/1605. 0.1768 s / img. ETA=0:01:12
+[04/23 21:33:22 d2.evaluation.evaluator]: Inference done 1229/1605. 0.1768 s / img. ETA=0:01:07
+[04/23 21:33:27 d2.evaluation.evaluator]: Inference done 1257/1605. 0.1769 s / img. ETA=0:01:02
+[04/23 21:33:32 d2.evaluation.evaluator]: Inference done 1285/1605. 0.1769 s / img. ETA=0:00:57
+[04/23 21:33:37 d2.evaluation.evaluator]: Inference done 1313/1605. 0.1769 s / img. ETA=0:00:52
+[04/23 21:33:42 d2.evaluation.evaluator]: Inference done 1341/1605. 0.1770 s / img. ETA=0:00:47
+[04/23 21:33:47 d2.evaluation.evaluator]: Inference done 1369/1605. 0.1770 s / img. ETA=0:00:42
+[04/23 21:33:52 d2.evaluation.evaluator]: Inference done 1397/1605. 0.1770 s / img. ETA=0:00:37
+[04/23 21:33:57 d2.evaluation.evaluator]: Inference done 1425/1605. 0.1771 s / img. ETA=0:00:32
+[04/23 21:34:02 d2.evaluation.evaluator]: Inference done 1453/1605. 0.1771 s / img. ETA=0:00:27
+[04/23 21:34:07 d2.evaluation.evaluator]: Inference done 1482/1605. 0.1771 s / img. ETA=0:00:21
+[04/23 21:34:12 d2.evaluation.evaluator]: Inference done 1510/1605. 0.1771 s / img. ETA=0:00:16
+[04/23 21:34:17 d2.evaluation.evaluator]: Inference done 1538/1605. 0.1771 s / img. ETA=0:00:11
+[04/23 21:34:22 d2.evaluation.evaluator]: Inference done 1566/1605. 0.1771 s / img. ETA=0:00:06
+[04/23 21:34:28 d2.evaluation.evaluator]: Inference done 1594/1605. 0.1771 s / img. ETA=0:00:01
+[04/23 21:34:30 d2.evaluation.evaluator]: Total inference time: 0:04:46.197581 (0.178873 s / img per device, on 1 devices)
+[04/23 21:34:30 d2.evaluation.evaluator]: Total inference pure compute time: 0:04:43 (0.177146 s / img per device, on 1 devices)
+THESE ARE MY TASKS: {'bbox'}
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.99s).
+Accumulating evaluation results...
+DONE (t=0.33s).
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.505
+ Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.754
+ Average Precision  (AP) @[ IoU=0.15      | area=   all | maxDets=100 ] = 0.754
+ Average Precision  (AP) @[ IoU=0.20      | area=   all | maxDets=100 ] = 0.754
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = 0.753
+ Average Precision  (AP) @[ IoU=0.30      | area=   all | maxDets=100 ] = 0.733
+ Average Precision  (AP) @[ IoU=0.35      | area=   all | maxDets=100 ] = 0.669
+ Average Precision  (AP) @[ IoU=0.40      | area=   all | maxDets=100 ] = 0.624
+ Average Precision  (AP) @[ IoU=0.45      | area=   all | maxDets=100 ] = 0.603
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.599
+ Average Precision  (AP) @[ IoU=0.55      | area=   all | maxDets=100 ] = 0.588
+ Average Precision  (AP) @[ IoU=0.60      | area=   all | maxDets=100 ] = 0.553
+ Average Precision  (AP) @[ IoU=0.65      | area=   all | maxDets=100 ] = 0.513
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.427
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.327
+ Average Precision  (AP) @[ IoU=0.80      | area=   all | maxDets=100 ] = 0.228
+ Average Precision  (AP) @[ IoU=0.85      | area=   all | maxDets=100 ] = 0.142
+ Average Precision  (AP) @[ IoU=0.90      | area=   all | maxDets=100 ] = 0.060
+ Average Precision  (AP) @[ IoU=0.95      | area=   all | maxDets=100 ] = 0.002
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.311
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.799
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.862
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.544
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.761
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.762
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.571
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.861
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.894
+OrderedDict([('bbox',
+              {'AP': 50.459064831401804,
+               'AP10': 75.39175199949901,
+               'AP15': 75.38584879993387,
+               'AP20': 75.37683436242602,
+               'AP25': 75.2949501264723,
+               'AP30': 73.2764914043428,
+               'AP35': 66.94533893224866,
+               'AP40': 62.4176782415019,
+               'AP45': 60.32169898788039,
+               'AP50': 59.914421690165454,
+               'AP55': 58.76360834374837,
+               'AP60': 55.30556334329238,
+               'AP65': 51.26433439404868,
+               'AP70': 42.66119868645367,
+               'AP75': 32.68628057122451,
+               'AP80': 22.8299892586764,
+               'AP85': 14.228908243844138,
+               'AP90': 5.9961979310027,
+               'AP95': 0.20207164847111828,
+               'APl': 86.22917289245436,
+               'APm': 79.91388464036156,
+               'APs': 31.06349375465011}),
+             ('count', 10997)])

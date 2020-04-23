@@ -5,6 +5,35 @@ import os
 import random
 import pillow
 
+def save_augmented(file_name, annot_dir_path, dir_name_parsed, augmented_annotaton_dir, transform, transform_fcns):
+    file_name_parsed = file_name.split('.')[0][:-1]
+    original_image_path = './image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
+    augmented_image_path = './data_aug_' + transform + '_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
+
+    if not os.path.exists('./data_aug_' + transform + '_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'):
+        os.makedirs('./data_aug_' + transform + '_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames')
+
+    augmented_annotation_path = augmented_annotaton_dir + '/' + str(file_name.split('.')[0][:])
+    if not os.path.exists(augmented_annotaton_dir):
+        os.makedirs(augmented_annotaton_dir)
+
+    img = cv2.imread(original_image_path)
+
+    original_annotation_path = annot_dir_path + '/' + str(file_name)
+    original_annotation = loadmat(original_annotation_path)['annotations']
+    obstacle = original_annotation['obstacles'][0, 0]
+
+    # only make changes to the images that have at least 1 obstacle
+    images = []
+    if obstacle.shape[0] > 0:
+        for transform_fcn in transform_fcns:
+            images.append(transform_fcn(img,obstacle))
+
+    for image in images:
+        np.save(augmented_annotation_path,image[1])
+        write_status = cv2.imwrite(augmented_image_path, image[0])
+
+
 def data_aug():
     # make augmentation folder
     if not os.path.exists("./data_aug_shift_annotation"):
@@ -13,39 +42,30 @@ def data_aug():
         os.makedirs("./data_aug_shift_image_data")
     if not os.path.exists("./data_aug_shift_annotation/annotationsV2_rectified"):
         os.makedirs("./data_aug_shift_annotation/annotationsV2_rectified")
+
+    #color distortion
+    if not os.path.exists("./data_aug_color_annotation"):
+        os.makedirs("./data_aug_color_annotation")
+    if not os.path.exists("./data_aug_color_image_data"):
+        os.makedirs("./data_aug_color_image_data")
+
+    if not os.path.exists("./data_aug_mirror_annotation"):
+        os.makedirs("./data_aug_mirror_annotation")
+    if not os.path.exists("./data_aug_mirror_image_data"):
+        os.makedirs("./data_aug_mirror_image_data")
+
     for root,dir,files in os.walk('./annotation/annotationsV2_rectified'):
-        data_aug_annot_dir_prefix = "./data_aug_shift_annotation/annotationsV2_rectified\\"
         if len(root)>64:
-            annot_dir_path = root
-            dir_name_parsed = annot_dir_path.split("\\")[1]
-            augmented_annotaton_dir = data_aug_annot_dir_prefix + dir_name_parsed + "\\ground_truth"
-
+            transform_fcns = {'shift': [translation], 'color': [color_distort], 'mirror': [mirror_vertical, mirror_horizontal]}
             for file_name in files:
-                file_name_parsed = file_name.split('.')[0][:-1]
-                original_image_path = './image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
-                augmented_image_path = './data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
+                for transform in transform_functions:
+                    data_aug_annot_dir_prefix = "./data_aug_"+ transform + "_annotation/annotationsV2_rectified\\"
+                    annot_dir_path = root
+                    dir_name_parsed = annot_dir_path.split("\\")[1]
+                    augmented_annotaton_dir = data_aug_annot_dir_prefix + dir_name_parsed + "\\ground_truth"
+                    save_augmented(file_name, annot_dir_path, dir_name_parsed, augmented_annotaton_dir, transform, transform_fcns[transform])
 
-                if not os.path.exists('./data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'):
-                    os.makedirs('./data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames')
 
-                augmented_annotation_path = augmented_annotaton_dir + '/' + str(file_name.split('.')[0][:])
-                if not os.path.exists(augmented_annotaton_dir):
-                    os.makedirs(augmented_annotaton_dir)
-
-                img = cv2.imread(original_image_path)
-
-                original_annotation_path = annot_dir_path + '/' + str(file_name)
-                original_annotation = loadmat(original_annotation_path)['annotations']
-                obstacle = original_annotation['obstacles'][0, 0]
-
-                # only make changes to the images that have at least 1 obstacle
-                if obstacle.shape[0] > 0:
-                    img,obstacle = translation(img,obstacle)
-
-                np.save(augmented_annotation_path,obstacle)
-                write_status = cv2.imwrite(augmented_image_path, img)
-                # check if writing image is successful
-                # print(write_status)
     return None
 
 
@@ -90,7 +110,7 @@ def translation(img,obstacle):
     img = np.roll(img, (row_shift, col_shift), axis=(0, 1))
     return img,bbox
 
-def color_distort(image, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
+def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
     transforms = []
 
     if 'contrast' in settings:
@@ -111,7 +131,7 @@ def color_distort(image, settings=['contrast', 'sharpen', 'brighten', 'balance']
         for i in np.linspace(0.1, 1, divisions):
             transformed_images.append(transform.enhance(i))
 
-    return transformed_images
+    return transformed_images, obstacles
 
 def main():
     

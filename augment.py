@@ -97,7 +97,7 @@ def sharpeness(image, obstacles, lower_bound=0.5, upper_bound=1.5):
 
 
 @augmentation("brightness")
-def brightness(image, obstacles, lower_bound=0.5, upper_bound=0.5):
+def brightness(image, obstacles, lower_bound=0.5, upper_bound=1.5):
 
     # Convert to PIL Image
     image = Image.fromarray(image)
@@ -166,6 +166,8 @@ def print_help():
 
 
 # * Main
+
+import pdb; pdb.set_trace()
 
 if __name__ == '__main__':
 

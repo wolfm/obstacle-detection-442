@@ -167,8 +167,6 @@ def print_help():
 
 # * Main
 
-import pdb; pdb.set_trace()
-
 if __name__ == '__main__':
 
     # Set args equal to sys.argv without the name of the script as the first argument

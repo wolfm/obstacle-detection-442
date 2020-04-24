@@ -3,7 +3,7 @@ from scipy.io import loadmat
 import cv2
 import os
 import random
-import pillow
+from PIL import ImageEnhance, Image
 
 def save_augmented(file_name, annot_dir_path, dir_name_parsed, augmented_annotaton_dir, transform, transform_fcns):
     file_name_parsed = file_name.split('.')[0][:-1]
@@ -58,7 +58,7 @@ def data_aug():
         if len(root)>64:
             transform_fcns = {'shift': [translation], 'color': [color_distort], 'mirror': [mirror_vertical, mirror_horizontal]}
             for file_name in files:
-                for transform in transform_functions:
+                for transform in transform_fcns:
                     data_aug_annot_dir_prefix = "./data_aug_"+ transform + "_annotation/annotationsV2_rectified\\"
                     annot_dir_path = root
                     dir_name_parsed = annot_dir_path.split("\\")[1]
@@ -110,6 +110,7 @@ def translation(img,obstacle):
     img = np.roll(img, (row_shift, col_shift), axis=(0, 1))
     return img,bbox
 
+
 def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
     transforms = []
 
@@ -119,7 +120,7 @@ def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten',
     if 'sharpen' in settings:
         transforms.append(ImageEnhance.Sharpness(image))
 
-    if 'brighten' in setting:
+    if 'brighten' in settings:
         transforms.append(ImageEnhance.Brightness(image))
 
     if 'balance' in settings:
@@ -132,6 +133,7 @@ def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten',
             transformed_images.append(transform.enhance(i))
 
     return transformed_images, obstacles
+
 
 def main():
     

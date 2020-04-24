@@ -5,6 +5,11 @@ import numpy as np
 import os
 from pathlib import Path
 import cv2
+import glob
+from scipy.io import loadmat, savemat
+from tqdm import tqdm
+from PIL import ImageEnhance, Image
+
 
 augmentation_function_map = {}
 
@@ -22,8 +27,8 @@ def augmentation(command):
 
     return augmentation_decorator
 
+# * Augmentations
 
-@augmentation("flip-vert")
 def mirror_vertical(image, obstacles):
 
     for i, ob in enumerate(obstacles):
@@ -32,6 +37,7 @@ def mirror_vertical(image, obstacles):
     image = np.flip(image, axis=0)
 
     return image, obstacles
+
 
 @augmentation("flip-horiz")
 def mirror_horizontal(image, obstacles):
@@ -43,36 +49,52 @@ def mirror_horizontal(image, obstacles):
 
     return image, obstacles
 
+def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
+    transforms = []
 
-# * Other commands
+    if 'contrast' in settings:
+        transforms.append(ImageEnhance.Contrast(Image))
 
-# TODO
+    if 'sharpen' in settings:
+        transforms.append(ImageEnhance.Sharpness(image))
+
+    if 'brighten' in settings:
+        transforms.append(ImageEnhance.Brightness(image))
+
+    if 'balance' in settings:
+        transforms.append(ImageEnhance.Color(image))
+
+    transformed_images = []
+
+    for transform in transform:
+        for i in np.linspace(0.1, 1, divisions):
+            transformed_images.append(transform.enhance(i))
+
+    return transformed_images, obstacles
+
+# @augmentation("color-contrast")
+def color_contrast(image, obstacles):
+    return color_distort(image, obstacles, 'contrast', divisions=2)
+
 def print_help():
-    print("Usage:")
+    print("Usage: augment [options]")
+    print("  Each option corresponds to an augmentation function")
+    print("  Running with no options will run all augmetnation functions")
+    print("    options:")
+    for func_name in augmentation_function_map:
+        print("      - {}".format(func_name))
+
 
 # * Main
 
 if __name__ == '__main__':
-    
-    # Test
-    img = np.zeros((12,12))
-    img[1, 1] = 1
-    img[10, 1] = 2
-    img[10, 10] = 3
-    img[1, 10] = 4
-
-    obs = np.array([[0, 0, 4, 2]])
-
-    img, obs = mirror_horizontal(img, obs)
-    
-    import pdb; pdb.set_trace()
 
     # Set args equal to sys.argv without the name of the script as the first argument
     args = sys.argv
     args.pop(0)
 
     # If argument is for help, print help and exit
-    if "-h" or "--help" in args:
+    if "-h" in args or "--help" in args:
         print_help()
         sys.exit(0)
 
@@ -88,7 +110,7 @@ if __name__ == '__main__':
         arg = arg.strip('-')
 
         # If this arg is valid
-        if arg.strip('-') not in augmentation_function_map:
+        if arg not in augmentation_function_map:
             print("Invalid argument: {}".format(arg))
             valid = False
     
@@ -109,61 +131,48 @@ if __name__ == '__main__':
         if not os.path.exists(folderPath / "annotations"):
             os.makedirs(folderPath / "annotations")
 
-    # Iterate through each argument, calling its mapped augmentation function
-    for image, annotation in zip(target_images, target_annotations):
+    print("Generating augmented data for following augmetnations:")
+    for arg in args:
+        print("\t- {}".format(arg))
+
+    # Iterate through all annotation files
+    for annot_path in tqdm(glob.glob("./data/annotationsV2_rectified_train/*/ground_truth/*")):
+        
+        annot_path = Path(annot_path)
+
+        # file_id = file name minus extension (ex: "0002501L")
+        file_id = annot_path.name.split('.')[0]
+
+        # Get list of image matching path (should have 1 item)
+        image_path = glob.glob("./data/video_data/*/framesRectified/{}.jpg".format(file_id)) 
+
+        # If no frame for this annotation, skip this iteration
+        if len(image_path) == 0:
+            continue
+
+        # If duplicate images found for an annotation
+        elif len(image_path) > 1:
+            print("Duplicate frames found for annotation; this should not occur")
+
+        image_path = Path(image_path[0])
+
+        # For each augmentation
         for arg in args:
 
-            image_out = augmentation_function_map[arg](image, annotation)
+            # Open files
+            image = cv2.imread(str(image_path))
+            annotation = loadmat(annot_path)['annotations']['obstacles'][0, 0]
 
-    # Hao's iteration code
+            # Augment
+            image_out, annotation_out = augmentation_function_map[arg](image, annotation)
 
-    # make augmentation folder
+            # Output folder path
+            outputFolder = Path("augmented/{}".format(arg))
 
-    
-    """
-    if not os.path.exists("./data_aug_shift_annotation"):
-        os.makedirs("./data_aug_shift_annotation")
-
-    if not os.path.exists("./data_aug_shift_image_data"):
-        os.makedirs("./data_aug_shift_image_data")
-    if not os.path.exists("./data_aug_shift_annotation/annotationsV2_rectified"):
-        os.makedirs("./data_aug_shift_annotation/annotationsV2_rectified")
-    
-    for root,dir,files in os.walk('./annotation/annotationsV2_rectified'):
-
-        data_aug_annot_dir_prefix = "./data_aug_shift_annotation/annotationsV2_rectified\\"
-
-        if len(root)>64:
-            annot_dir_path = root
-            dir_name_parsed = annot_dir_path.split("\\")[1]
-            augmented_annotaton_dir = data_aug_annot_dir_prefix + dir_name_parsed + "\\ground_truth"
-
-            for file_name in files:
-                file_name_parsed = file_name.split('.')[0][:-1]
-                original_image_path = './image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
-                augmented_image_path = './data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'+ '/'+file_name_parsed + 'L.jpg'
-
-                if not os.path.exists('./data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames'):
-                    os.makedirs('./data_aug_shift_image_data/video_data' + '/'+ str(dir_name_parsed) + '/'+'frames')
-
-                augmented_annotation_path = augmented_annotaton_dir + '/' + str(file_name.split('.')[0][:])
-                if not os.path.exists(augmented_annotaton_dir):
-                    os.makedirs(augmented_annotaton_dir)
-
-                img = cv2.imread(original_image_path)
-
-                original_annotation_path = annot_dir_path + '/' + str(file_name)
-                original_annotation = loadmat(original_annotation_path)['annotations']
-                obstacle = original_annotation['obstacles'][0, 0]
-
-                # only make changes to the images that have at least 1 obstacle
-                if obstacle.shape[0] > 0:
-                    img,obstacle = translation(img,obstacle)
-
-                np.save(augmented_annotation_path,obstacle)
-                write_status = cv2.imwrite(augmented_image_path, img)
-                # check if writing image is successful
-                # print(write_status)
-
-
-"""
+            # Save output image
+            outputPath = outputFolder / "images" / (file_id + ".jpg")
+            cv2.imwrite(str(outputPath), image_out)
+            
+            # Save output annotations
+            outputPath = outputFolder / "annotations" / (file_id + ".mat")
+            savemat(str(outputPath), {"annotations": {"obstacles" : annotation_out}})

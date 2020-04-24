@@ -2,7 +2,7 @@
 env/
 
 # Augmented images
-augmented/
+# augmented/
 
 # vscode configuration
 .vscode/

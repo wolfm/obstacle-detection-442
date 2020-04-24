@@ -74,7 +74,7 @@ def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten',
 
 # @augmentation("color-contrast")
 def color_contrast(image, obstacles):
-    return color_distort(image, obstacles, 'contrast', divisions=2)
+    return color_distort(image, obstacles, ['contrast'], divisions=2)
 
 def print_help():
     print("Usage: augment [options]")

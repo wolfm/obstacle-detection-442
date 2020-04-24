@@ -1,0 +1,92 @@
+[04/24 08:06:12 d2.data.common]: Serializing 1605 elements to byte tensors and concatenating them all ...
+[04/24 08:06:12 d2.data.common]: Serialized dataset takes 0.45 MiB
+[04/24 08:06:12 d2.evaluation.evaluator]: Start inference on 1605 images
+[04/24 08:06:13 d2.evaluation.evaluator]: Inference done 11/1605. 0.0896 s / img. ETA=0:02:27
+[04/24 08:06:18 d2.evaluation.evaluator]: Inference done 66/1605. 0.0903 s / img. ETA=0:02:21
+[04/24 08:06:23 d2.evaluation.evaluator]: Inference done 121/1605. 0.0903 s / img. ETA=0:02:16
+[04/24 08:06:28 d2.evaluation.evaluator]: Inference done 175/1605. 0.0906 s / img. ETA=0:02:12
+[04/24 08:06:33 d2.evaluation.evaluator]: Inference done 230/1605. 0.0903 s / img. ETA=0:02:07
+[04/24 08:06:38 d2.evaluation.evaluator]: Inference done 285/1605. 0.0902 s / img. ETA=0:02:01
+[04/24 08:06:43 d2.evaluation.evaluator]: Inference done 339/1605. 0.0902 s / img. ETA=0:01:56
+[04/24 08:06:48 d2.evaluation.evaluator]: Inference done 393/1605. 0.0904 s / img. ETA=0:01:52
+[04/24 08:06:53 d2.evaluation.evaluator]: Inference done 447/1605. 0.0904 s / img. ETA=0:01:47
+[04/24 08:06:58 d2.evaluation.evaluator]: Inference done 502/1605. 0.0903 s / img. ETA=0:01:41
+[04/24 08:07:03 d2.evaluation.evaluator]: Inference done 557/1605. 0.0902 s / img. ETA=0:01:36
+[04/24 08:07:08 d2.evaluation.evaluator]: Inference done 612/1605. 0.0902 s / img. ETA=0:01:31
+[04/24 08:07:14 d2.evaluation.evaluator]: Inference done 667/1605. 0.0902 s / img. ETA=0:01:26
+[04/24 08:07:19 d2.evaluation.evaluator]: Inference done 722/1605. 0.0902 s / img. ETA=0:01:21
+[04/24 08:07:24 d2.evaluation.evaluator]: Inference done 777/1605. 0.0902 s / img. ETA=0:01:16
+[04/24 08:07:29 d2.evaluation.evaluator]: Inference done 832/1605. 0.0902 s / img. ETA=0:01:11
+[04/24 08:07:34 d2.evaluation.evaluator]: Inference done 886/1605. 0.0902 s / img. ETA=0:01:06
+[04/24 08:07:39 d2.evaluation.evaluator]: Inference done 941/1605. 0.0902 s / img. ETA=0:01:01
+[04/24 08:07:44 d2.evaluation.evaluator]: Inference done 996/1605. 0.0902 s / img. ETA=0:00:56
+[04/24 08:07:49 d2.evaluation.evaluator]: Inference done 1051/1605. 0.0902 s / img. ETA=0:00:51
+[04/24 08:07:54 d2.evaluation.evaluator]: Inference done 1106/1605. 0.0901 s / img. ETA=0:00:45
+[04/24 08:07:59 d2.evaluation.evaluator]: Inference done 1161/1605. 0.0901 s / img. ETA=0:00:40
+[04/24 08:08:04 d2.evaluation.evaluator]: Inference done 1216/1605. 0.0901 s / img. ETA=0:00:35
+[04/24 08:08:09 d2.evaluation.evaluator]: Inference done 1271/1605. 0.0901 s / img. ETA=0:00:30
+[04/24 08:08:14 d2.evaluation.evaluator]: Inference done 1326/1605. 0.0901 s / img. ETA=0:00:25
+[04/24 08:08:19 d2.evaluation.evaluator]: Inference done 1381/1605. 0.0900 s / img. ETA=0:00:20
+[04/24 08:08:24 d2.evaluation.evaluator]: Inference done 1436/1605. 0.0901 s / img. ETA=0:00:15
+[04/24 08:08:29 d2.evaluation.evaluator]: Inference done 1491/1605. 0.0901 s / img. ETA=0:00:10
+[04/24 08:08:34 d2.evaluation.evaluator]: Inference done 1546/1605. 0.0901 s / img. ETA=0:00:05
+[04/24 08:08:39 d2.evaluation.evaluator]: Inference done 1601/1605. 0.0900 s / img. ETA=0:00:00
+[04/24 08:08:40 d2.evaluation.evaluator]: Total inference time: 0:02:27.300722 (0.092063 s / img per device, on 1 devices)
+[04/24 08:08:40 d2.evaluation.evaluator]: Total inference pure compute time: 0:02:24 (0.090029 s / img per device, on 1 devices)
+THESE ARE MY TASKS: {'bbox'}
+Loading and preparing results...
+DONE (t=0.17s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=0.97s).
+Accumulating evaluation results...
+DONE (t=0.31s).
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.507
+ Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.733
+ Average Precision  (AP) @[ IoU=0.15      | area=   all | maxDets=100 ] = 0.733
+ Average Precision  (AP) @[ IoU=0.20      | area=   all | maxDets=100 ] = 0.732
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = 0.731
+ Average Precision  (AP) @[ IoU=0.30      | area=   all | maxDets=100 ] = 0.729
+ Average Precision  (AP) @[ IoU=0.35      | area=   all | maxDets=100 ] = 0.682
+ Average Precision  (AP) @[ IoU=0.40      | area=   all | maxDets=100 ] = 0.653
+ Average Precision  (AP) @[ IoU=0.45      | area=   all | maxDets=100 ] = 0.632
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.626
+ Average Precision  (AP) @[ IoU=0.55      | area=   all | maxDets=100 ] = 0.613
+ Average Precision  (AP) @[ IoU=0.60      | area=   all | maxDets=100 ] = 0.588
+ Average Precision  (AP) @[ IoU=0.65      | area=   all | maxDets=100 ] = 0.546
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.457
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.345
+ Average Precision  (AP) @[ IoU=0.80      | area=   all | maxDets=100 ] = 0.216
+ Average Precision  (AP) @[ IoU=0.85      | area=   all | maxDets=100 ] = 0.094
+ Average Precision  (AP) @[ IoU=0.90      | area=   all | maxDets=100 ] = 0.025
+ Average Precision  (AP) @[ IoU=0.95      | area=   all | maxDets=100 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.271
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.779
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.836
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.566
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.745
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.745
+ Average Recall     (AR) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.930
+ Average Recall     (AR) @[ IoU=0.15      | area=   all | maxDets=100 ] = 0.930
+ Average Recall     (AR) @[ IoU=0.20      | area=   all | maxDets=100 ] = 0.929
+ Average Recall     (AR) @[ IoU=0.25      | area=   all | maxDets=100 ] = 0.928
+ Average Recall     (AR) @[ IoU=0.30      | area=   all | maxDets=100 ] = 0.928
+ Average Recall     (AR) @[ IoU=0.35      | area=   all | maxDets=100 ] = 0.926
+ Average Recall     (AR) @[ IoU=0.40      | area=   all | maxDets=100 ] = 0.925
+ Average Recall     (AR) @[ IoU=0.45      | area=   all | maxDets=100 ] = 0.923
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.920
+ Average Recall     (AR) @[ IoU=0.55      | area=   all | maxDets=100 ] = 0.908
+ Average Recall     (AR) @[ IoU=0.60      | area=   all | maxDets=100 ] = 0.886
+ Average Recall     (AR) @[ IoU=0.65      | area=   all | maxDets=100 ] = 0.841
+ Average Recall     (AR) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.757
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.650
+ Average Recall     (AR) @[ IoU=0.80      | area=   all | maxDets=100 ] = 0.507
+ Average Recall     (AR) @[ IoU=0.85      | area=   all | maxDets=100 ] = 0.335
+ Average Recall     (AR) @[ IoU=0.90      | area=   all | maxDets=100 ] = 0.176
+ Average Recall     (AR) @[ IoU=0.95      | area=   all | maxDets=100 ] = 0.016
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.573
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.826
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.870
+OrderedDict([('bbox', {'AP': 50.74737468886488, 'AP10': 73.28912549721804, 'AP15': 73.28912549721804, 'AP20': 73.15067183578006, 'AP25': 73.10721736712603, 'AP30': 72.86314465461355, 'AP35': 68.15245491469109, 'AP40': 65.25102529990225, 'AP45': 63.24515020013857, 'AP50': 62.59223539224457, 'AP55': 61.276427353175045, 'AP60': 58.81425659729901, 'AP65': 54.64623580187145, 'AP70': 45.72618172315872, 'AP75': 34.48677156726615, 'AP80': 21.643647910760784, 'AP85': 9.368414552540576, 'AP90': 2.513959419757298, 'AP95': 0.03669881480662195, 'APs': 27.094656298719595, 'APm': 77.87848808103715, 'APl': 83.6311757365097, 'ARd1': 56.56641604010025, 'ARd10': 74.53216374269006, 'ARd100': 74.53216374269006, 'AR10': 93.00751879699249, 'AR15': 93.00751879699249, 'AR20': 92.93233082706766, 'AR25': 92.78195488721805, 'AR30': 92.78195488721805, 'AR35': 92.63157894736842, 'AR40': 92.4812030075188, 'AR45': 92.33082706766918, 'AR50': 92.03007518796993, 'AR55': 90.82706766917293, 'AR60': 88.57142857142857, 'AR65': 84.06015037593984, 'AR70': 75.71428571428571, 'AR75': 65.0375939849624, 'AR80': 50.67669172932331, 'AR85': 33.53383458646616, 'AR90': 17.593984962406015, 'AR95': 1.5789473684210527, 'ARs': 57.29847494553377, 'ARm': 82.56172839506173, 'ARl': 87.00716845878136}), ('count', 10365)])

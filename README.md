@@ -1,5 +1,7 @@
-### WN2020 EECS 442 Final Project
+## WN2020 EECS 442 Final Project
+
 Sayan Ghosh, Michael Rakowiecki, Atishay Singh, Hao Wang, Michael Wolf
+
 Object Detection for aquatic environments based on [Detectron](https://github.com/facebookresearch/Detectron/).
 
 <div align="center">
@@ -7,6 +9,7 @@ Object Detection for aquatic environments based on [Detectron](https://github.co
 </div>
 
 ## Overview
+
 This project performs object detection on aquatic images using Faster RCNN R101 from the 
 [Detectron2 Model Zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) as a backbone. 
 Our model was trained on the MODD2 dataset using this pre-trained model. In addition to the MODD2 dataset images, data augmentation was 

@@ -1,5 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # adapted by Michael Rakowiecki for MODD2 dataset
+    
 import contextlib
 import copy
 import io
@@ -248,8 +249,16 @@ class COCOEvaluatorForMODD(DatasetEvaluator):
         """
 
         metrics = {
-            "bbox": ["AP", "AP15", "AP20", "AP25", "AP30", "AP35", "AP40", "AP45", 
-                     "AP50", "AP55", "AP60", "AP15s", "APs", "APm", "APl"],
+            "bbox": ["AP", "AP10", "AP15", "AP20", "AP25", "AP30", "AP35", "AP40", "AP45", 
+                     "AP50", "AP55", "AP60", "AP65", "AP70", "AP75", "AP80", "AP85", 
+                     "AP90", "AP95", "APs", "APm", "APl", "ARd1", "ARd10", "ARd100", 
+                     "AR10", "AR15", "AR20", "AR25", "AR30", "AR35", "AR40", "AR45", 
+                     "AR50", "AR55", "AR60", "AR65", "AR70", "AR75", "AR80", "AR85", 
+                     "AR90", "AR95", "ARs", "ARm", "ARl"],
+            # "bbox": ["AP", "AP15", "AP20", "AP25", "AP30", "AP35", "AP40", "AP45", 
+            #          "AP50", "AP55", "AP60", "AP15s", "APs", "APm", "APl"],
+            # "bbox": ["AP", "AP50", "AP55", "AP60", "AP65", "AP70", "AP75", "AP80", 
+            #   "AP85", "AP90", "AP95", "AP50s", "APs", "APm", "APl"],
             "segm": ["AP", "AP50", "AP75", "APs", "APm", "APl"],
             "keypoints": ["AP", "AP50", "AP75", "APm", "APl"],
         }[iou_type]
@@ -460,7 +469,7 @@ def _evaluate_box_proposals(dataset_predictions, coco_api, thresholds=None, area
 
     if thresholds is None:
         step = 0.05
-        thresholds = torch.arange(0.5, 0.95 + 1e-5, step, dtype=torch.float32)
+        thresholds = torch.arange(0.50, 0.95 + 1e-5, step, dtype=torch.float32)
     recalls = torch.zeros_like(thresholds)
     # compute recall for each iou threshold
     for i, t in enumerate(thresholds):

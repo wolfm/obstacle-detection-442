@@ -24,8 +24,6 @@ def show_with_boxes(image, obstacles, ax):
     for ob in obstacles:
         rect = patches.Rectangle((int(ob[0]), int(ob[1])), int(ob[2]), int(ob[3]), linewidth=1,edgecolor='r',facecolor='none')
         ax.add_patch(rect)
-    
-    
 
 
 # * Decorators
@@ -42,6 +40,7 @@ def augmentation(command):
 
     return augmentation_decorator
 
+
 # * Augmentations
 
 def mirror_vertical(image, obstacles):
@@ -56,13 +55,6 @@ def mirror_vertical(image, obstacles):
 
 @augmentation("flip-horiz")
 def mirror_horizontal(image, obstacles):
-    
-    # Test
-    """
-    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-    ax[0].set_title("Original")
-    show_with_boxes(image, obstacles, ax[0])
-    """
 
     # Flip bounding boxes
     for i, ob in enumerate(obstacles):
@@ -71,41 +63,98 @@ def mirror_horizontal(image, obstacles):
     # Flip image
     image = np.flip(image, axis=1)
 
-    # Test
-    """
-    show_with_boxes(image, obstacles, ax[1])
-    ax[1].set_title("Augmented")
-    plt.show()
-    """
+    return image, obstacles
+
+
+@augmentation("contrast")
+def contrast(image, obstacles, lower_bound=0.5, upper_bound=1.5):
+
+    # Convert to PIL Image
+    image = Image.fromarray(image)
+
+    # Enhance contrast
+    image = ImageEnhance.Contrast(image).enhance(random.choice([lower_bound, upper_bound]))
+    
+    # Convert back to numpy array
+    image = np.array(image)
 
     return image, obstacles
 
-def color_distort(image, obstacles, settings=['contrast', 'sharpen', 'brighten', 'balance'], divisions=2):
-    transforms = []
 
-    if 'contrast' in settings:
-        transforms.append(ImageEnhance.Contrast(Image))
+@augmentation("sharpness")
+def sharpeness(image, obstacles, lower_bound=0.5, upper_bound=1.5):
 
-    if 'sharpen' in settings:
-        transforms.append(ImageEnhance.Sharpness(image))
+    # Convert to PIL Image
+    image = Image.fromarray(image)
 
-    if 'brighten' in settings:
-        transforms.append(ImageEnhance.Brightness(image))
+    # Enhance contrast
+    image = ImageEnhance.Sharpness(image).enhance(random.choice([lower_bound, upper_bound]))
+    
+    # Convert back to numpy array
+    image = np.array(image)
 
-    if 'balance' in settings:
-        transforms.append(ImageEnhance.Color(image))
+    return image, obstacles
 
-    transformed_images = []
 
-    for transform in transform:
-        for i in np.linspace(0.1, 1, divisions):
-            transformed_images.append(transform.enhance(i))
+@augmentation("brightness")
+def brightness(image, obstacles, lower_bound=0.5, upper_bound=0.5):
 
-    return transformed_images, obstacles
+    # Convert to PIL Image
+    image = Image.fromarray(image)
 
-# @augmentation("color-contrast")
-def color_contrast(image, obstacles):
-    return color_distort(image, obstacles, ['contrast'], divisions=2)
+    # Enhance contrast
+    image = ImageEnhance.Brightness(image).enhance(random.choice([lower_bound, upper_bound]))
+    
+    # Convert back to numpy array
+    image = np.array(image)
+
+    return image, obstacles
+
+
+@augmentation("saturation")
+def saturation(image, obstacles, lower_bound=0.6, upper_bound=1.6):
+
+    # Convert to PIL Image
+    image = Image.fromarray(image)
+
+    # Enhance contrast
+    image = ImageEnhance.Color(image).enhance(random.choice([lower_bound, upper_bound]))
+    
+    # Convert back to numpy array
+    image = np.array(image)
+
+    return image, obstacles
+
+
+# @augmentation("shift")
+# TODO Test
+def translation(img,obstacle):
+    row_shift = random.randint(-100,100)
+    col_shift = random.randint(-100,100)
+
+    # Translate image
+    img = np.roll(img, (row_shift, col_shift), axis=(0, 1))
+
+    # Translate bounding boxes
+    for i in range(obstacle.shape[0]):
+        col_cor = obstacle[i][1]
+        row_cor = obstacle[i][0]
+        w = obstacle[i][2]
+        h = obstacle[i][3]
+
+        # check boundary condition
+        if 0 < col_cor + col_shift < img.shape[1] and 0 < row_cor + row_shift <img.shape[0]:
+            if col_cor + col_shift + w < img.shape[1] and row_cor + row_shift + h < img.shape[1]:
+                bbox_entry = np.array([col_cor + col_shift, row_cor + row_shift, w, h])
+                if i==0:
+                    bbox = bbox_entry
+                else:
+                    np.vstack((bbox,bbox_entry))
+        else :
+            bbox = obstacle
+
+    return img,bbox
+
 
 def print_help():
     print("Usage: augment [options]")
@@ -150,13 +199,13 @@ if __name__ == '__main__':
         sys.exit(0)
 
     # Create all directories now that we know 
-    for arg in args:
+    for i, arg in enumerate(args):
         
         # Remove leading '-'s from CLI options
-        arg = arg.strip('-')
+        args[i] = arg.strip('-')
 
         # Create output folders if it doesn't exist
-        folderPath = Path("augmented/{}".format(arg))
+        folderPath = Path("augmented/{}".format(args[i]))
         if not os.path.exists(folderPath / "images"):
             os.makedirs(folderPath / "images")
         if not os.path.exists(folderPath / "annotations"):

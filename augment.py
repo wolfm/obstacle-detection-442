@@ -9,9 +9,24 @@ import glob
 from scipy.io import loadmat, savemat
 from tqdm import tqdm
 from PIL import ImageEnhance, Image
-
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import random
 
 augmentation_function_map = {}
+
+# * Helper functions
+
+def show_with_boxes(image, obstacles, ax):
+
+    ax.imshow(image)
+
+    for ob in obstacles:
+        rect = patches.Rectangle((int(ob[0]), int(ob[1])), int(ob[2]), int(ob[3]), linewidth=1,edgecolor='r',facecolor='none')
+        ax.add_patch(rect)
+    
+    
+
 
 # * Decorators
 
@@ -41,11 +56,27 @@ def mirror_vertical(image, obstacles):
 
 @augmentation("flip-horiz")
 def mirror_horizontal(image, obstacles):
+    
+    # Test
+    """
+    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+    ax[0].set_title("Original")
+    show_with_boxes(image, obstacles, ax[0])
+    """
 
+    # Flip bounding boxes
     for i, ob in enumerate(obstacles):
         obstacles[i][0] = image.shape[1] - 1 - ob[0]-ob[2]
-        
+
+    # Flip image
     image = np.flip(image, axis=1)
+
+    # Test
+    """
+    show_with_boxes(image, obstacles, ax[1])
+    ax[1].set_title("Augmented")
+    plt.show()
+    """
 
     return image, obstacles
 
@@ -136,15 +167,21 @@ if __name__ == '__main__':
         print("\t- {}".format(arg))
 
     # Iterate through all annotation files
-    for annot_path in tqdm(glob.glob("./data/annotationsV2_rectified_train/*/ground_truth/*")):
+    for annot_path in tqdm(glob.glob("./data/annotationsV2_rectified_train/*/ground_truth/*.mat")):
         
         annot_path = Path(annot_path)
 
-        # file_id = file name minus extension (ex: "0002501L")
-        file_id = annot_path.name.split('.')[0]
+        # file_name = file name minus extension (ex: "0002501L")
+        file_name = annot_path.name.split('.')[0]
+        # folder_name = name of grandparent folder (ex: "kope67-00-00025200-00025670")
+        folder_name = annot_path.parents[1].name
+        # Kope_id = set of gradparent folders this image belongs to (ex: "kope67")
+        # Necessary because there are files with the same name in different "kope" folder sets
+        kope_id = folder_name.split('-')[0]
+
 
         # Get list of image matching path (should have 1 item)
-        image_path = glob.glob("./data/video_data/*/framesRectified/{}.jpg".format(file_id)) 
+        image_path = glob.glob("./data/video_data/{}/framesRectified/{}.jpg".format(folder_name, file_name)) 
 
         # If no frame for this annotation, skip this iteration
         if len(image_path) == 0:
@@ -152,7 +189,8 @@ if __name__ == '__main__':
 
         # If duplicate images found for an annotation
         elif len(image_path) > 1:
-            print("Duplicate frames found for annotation; this should not occur")
+            print("{} frames found for annotation; there should only be 1".format(len(image_path)))
+            print("Images found: ", image_path)
 
         image_path = Path(image_path[0])
 
@@ -170,9 +208,9 @@ if __name__ == '__main__':
             outputFolder = Path("augmented/{}".format(arg))
 
             # Save output image
-            outputPath = outputFolder / "images" / (file_id + ".jpg")
+            outputPath = outputFolder / "images" / (kope_id + "-" + file_name + ".jpg")
             cv2.imwrite(str(outputPath), image_out)
             
             # Save output annotations
-            outputPath = outputFolder / "annotations" / (file_id + ".mat")
+            outputPath = outputFolder / "annotations" / (kope_id + "-" + file_name + ".mat")
             savemat(str(outputPath), {"annotations": {"obstacles" : annotation_out}})

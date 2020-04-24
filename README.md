@@ -28,5 +28,4 @@ objects. This is the first step in our plan to create a model to perform obstacl
 
 ## Usage
 
-Use our [Colab Notebook](https://colab.research.google.com/drive/1n6rM13qGCFwbL3Fss1goBc-RVrrkXqHR) and follow the instructions to download the dataset, 
-train the model, and evaluate images.
+Use our [Colab Notebook](https://colab.research.google.com/drive/1n6rM13qGCFwbL3Fss1goBc-RVrrkXqHR) and follow the instructions to download the dataset, train the model, and evaluate images.

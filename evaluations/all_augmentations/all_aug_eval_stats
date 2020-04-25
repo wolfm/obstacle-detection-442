@@ -1,0 +1,100 @@
+json_file was not found in MetaDataCatalog for 'modd2_val'. Trying to convert it to COCO format ...
+[04/25 01:17:21 d2.data.datasets.coco]: Converting dataset annotations in 'modd2_val' to COCO format ...)
+[04/25 01:17:22 d2.data.datasets.coco]: Converting dataset dicts into COCO format
+[04/25 01:17:22 d2.data.datasets.coco]: Conversion finished, num images: 1605, num annotations: 1330
+[04/25 01:17:22 d2.data.datasets.coco]: Caching annotations in COCO format: ./output/modd2_val_coco_format.json
+[04/25 01:17:22 d2.data.build]: Distribution of instances among all 1 categories:
+|  category  | #instances   |
+|:----------:|:-------------|
+|  obstacle  | 1330         |
+|            |              |
+[04/25 01:17:22 d2.data.common]: Serializing 1605 elements to byte tensors and concatenating them all ...
+[04/25 01:17:22 d2.data.common]: Serialized dataset takes 0.45 MiB
+[04/25 01:17:22 d2.evaluation.evaluator]: Start inference on 1605 images
+[04/25 01:17:23 d2.evaluation.evaluator]: Inference done 11/1605. 0.0837 s / img. ETA=0:02:15
+[04/25 01:17:28 d2.evaluation.evaluator]: Inference done 70/1605. 0.0837 s / img. ETA=0:02:10
+[04/25 01:17:33 d2.evaluation.evaluator]: Inference done 129/1605. 0.0838 s / img. ETA=0:02:05
+[04/25 01:17:38 d2.evaluation.evaluator]: Inference done 188/1605. 0.0838 s / img. ETA=0:02:00
+[04/25 01:17:43 d2.evaluation.evaluator]: Inference done 247/1605. 0.0839 s / img. ETA=0:01:55
+[04/25 01:17:48 d2.evaluation.evaluator]: Inference done 306/1605. 0.0839 s / img. ETA=0:01:50
+[04/25 01:17:53 d2.evaluation.evaluator]: Inference done 365/1605. 0.0839 s / img. ETA=0:01:45
+[04/25 01:17:59 d2.evaluation.evaluator]: Inference done 424/1605. 0.0839 s / img. ETA=0:01:40
+[04/25 01:18:04 d2.evaluation.evaluator]: Inference done 483/1605. 0.0839 s / img. ETA=0:01:35
+[04/25 01:18:09 d2.evaluation.evaluator]: Inference done 542/1605. 0.0839 s / img. ETA=0:01:30
+[04/25 01:18:14 d2.evaluation.evaluator]: Inference done 601/1605. 0.0839 s / img. ETA=0:01:25
+[04/25 01:18:19 d2.evaluation.evaluator]: Inference done 660/1605. 0.0839 s / img. ETA=0:01:20
+[04/25 01:18:24 d2.evaluation.evaluator]: Inference done 719/1605. 0.0839 s / img. ETA=0:01:15
+[04/25 01:18:29 d2.evaluation.evaluator]: Inference done 778/1605. 0.0839 s / img. ETA=0:01:10
+[04/25 01:18:34 d2.evaluation.evaluator]: Inference done 837/1605. 0.0839 s / img. ETA=0:01:05
+[04/25 01:18:39 d2.evaluation.evaluator]: Inference done 896/1605. 0.0839 s / img. ETA=0:01:00
+[04/25 01:18:44 d2.evaluation.evaluator]: Inference done 955/1605. 0.0839 s / img. ETA=0:00:55
+[04/25 01:18:49 d2.evaluation.evaluator]: Inference done 1014/1605. 0.0838 s / img. ETA=0:00:50
+[04/25 01:18:54 d2.evaluation.evaluator]: Inference done 1073/1605. 0.0838 s / img. ETA=0:00:45
+[04/25 01:18:59 d2.evaluation.evaluator]: Inference done 1132/1605. 0.0838 s / img. ETA=0:00:40
+[04/25 01:19:04 d2.evaluation.evaluator]: Inference done 1191/1605. 0.0838 s / img. ETA=0:00:35
+[04/25 01:19:09 d2.evaluation.evaluator]: Inference done 1250/1605. 0.0838 s / img. ETA=0:00:30
+[04/25 01:19:14 d2.evaluation.evaluator]: Inference done 1309/1605. 0.0838 s / img. ETA=0:00:25
+[04/25 01:19:19 d2.evaluation.evaluator]: Inference done 1368/1605. 0.0838 s / img. ETA=0:00:20
+[04/25 01:19:24 d2.evaluation.evaluator]: Inference done 1427/1605. 0.0838 s / img. ETA=0:00:15
+[04/25 01:19:29 d2.evaluation.evaluator]: Inference done 1486/1605. 0.0838 s / img. ETA=0:00:10
+[04/25 01:19:34 d2.evaluation.evaluator]: Inference done 1545/1605. 0.0838 s / img. ETA=0:00:05
+[04/25 01:19:39 d2.evaluation.evaluator]: Inference done 1604/1605. 0.0838 s / img. ETA=0:00:00
+[04/25 01:19:39 d2.evaluation.evaluator]: Total inference time: 0:02:16.591418 (0.085370 s / img per device, on 1 devices)
+[04/25 01:19:39 d2.evaluation.evaluator]: Total inference pure compute time: 0:02:14 (0.083840 s / img per device, on 1 devices)
+THESE ARE MY TASKS: {'bbox'}
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=1.25s).
+Accumulating evaluation results...
+DONE (t=0.35s).
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.497
+ Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.711
+ Average Precision  (AP) @[ IoU=0.15      | area=   all | maxDets=100 ] = 0.711
+ Average Precision  (AP) @[ IoU=0.20      | area=   all | maxDets=100 ] = 0.711
+ Average Precision  (AP) @[ IoU=0.25      | area=   all | maxDets=100 ] = 0.709
+ Average Precision  (AP) @[ IoU=0.30      | area=   all | maxDets=100 ] = 0.693
+ Average Precision  (AP) @[ IoU=0.35      | area=   all | maxDets=100 ] = 0.650
+ Average Precision  (AP) @[ IoU=0.40      | area=   all | maxDets=100 ] = 0.624
+ Average Precision  (AP) @[ IoU=0.45      | area=   all | maxDets=100 ] = 0.615
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.611
+ Average Precision  (AP) @[ IoU=0.55      | area=   all | maxDets=100 ] = 0.596
+ Average Precision  (AP) @[ IoU=0.60      | area=   all | maxDets=100 ] = 0.572
+ Average Precision  (AP) @[ IoU=0.65      | area=   all | maxDets=100 ] = 0.514
+ Average Precision  (AP) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.435
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.337
+ Average Precision  (AP) @[ IoU=0.80      | area=   all | maxDets=100 ] = 0.250
+ Average Precision  (AP) @[ IoU=0.85      | area=   all | maxDets=100 ] = 0.150
+ Average Precision  (AP) @[ IoU=0.90      | area=   all | maxDets=100 ] = 0.054
+ Average Precision  (AP) @[ IoU=0.95      | area=   all | maxDets=100 ] = 0.004
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.351
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.837
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.857
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.569
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.770
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.771
+ Average Recall     (AR) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.931
+ Average Recall     (AR) @[ IoU=0.15      | area=   all | maxDets=100 ] = 0.930
+ Average Recall     (AR) @[ IoU=0.20      | area=   all | maxDets=100 ] = 0.930
+ Average Recall     (AR) @[ IoU=0.25      | area=   all | maxDets=100 ] = 0.929
+ Average Recall     (AR) @[ IoU=0.30      | area=   all | maxDets=100 ] = 0.929
+ Average Recall     (AR) @[ IoU=0.35      | area=   all | maxDets=100 ] = 0.928
+ Average Recall     (AR) @[ IoU=0.40      | area=   all | maxDets=100 ] = 0.928
+ Average Recall     (AR) @[ IoU=0.45      | area=   all | maxDets=100 ] = 0.928
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.925
+ Average Recall     (AR) @[ IoU=0.55      | area=   all | maxDets=100 ] = 0.916
+ Average Recall     (AR) @[ IoU=0.60      | area=   all | maxDets=100 ] = 0.898
+ Average Recall     (AR) @[ IoU=0.65      | area=   all | maxDets=100 ] = 0.855
+ Average Recall     (AR) @[ IoU=0.70      | area=   all | maxDets=100 ] = 0.789
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.693
+ Average Recall     (AR) @[ IoU=0.80      | area=   all | maxDets=100 ] = 0.587
+ Average Recall     (AR) @[ IoU=0.85      | area=   all | maxDets=100 ] = 0.445
+ Average Recall     (AR) @[ IoU=0.90      | area=   all | maxDets=100 ] = 0.264
+ Average Recall     (AR) @[ IoU=0.95      | area=   all | maxDets=100 ] = 0.065
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.582
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.873
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = 0.897
+OrderedDict([('bbox', {'AP': 49.70579274723076, 'AP10': 71.09142841706169, 'AP15': 71.07667776634366, 'AP20': 71.07399514954605, 'AP25': 70.91283127657776, 'AP30': 69.32468181420695, 'AP35': 65.04683037092606, 'AP40': 62.35837747048003, 'AP45': 61.545896178849446, 'AP50': 61.07384665107127, 'AP55': 59.64026708268081, 'AP60': 57.20618294275972, 'AP65': 51.40499693999496, 'AP70': 43.531913845507795, 'AP75': 33.74509100594078, 'AP80': 24.968960144379544, 'AP85': 14.95548439614575, 'AP90': 5.396737276323533, 'AP95': 0.35007072135785006, 'APs': 35.07886854592511, 'APm': 83.73768889160719, 'APl': 85.72547301154361, 'ARd1': 56.879699248120296, 'ARd10': 77.046783625731, 'ARd100': 77.05096073517126, 'AR10': 93.08270676691728, 'AR15': 93.00751879699249, 'AR20': 93.00751879699249, 'AR25': 92.85714285714286, 'AR30': 92.85714285714286, 'AR35': 92.78195488721805, 'AR40': 92.78195488721805, 'AR45': 92.78195488721805, 'AR50': 92.4812030075188, 'AR55': 91.57894736842105, 'AR60': 89.84962406015038, 'AR65': 85.48872180451129, 'AR70': 78.94736842105263, 'AR75': 69.32330827067669, 'AR80': 58.721804511278194, 'AR85': 44.51127819548872, 'AR90': 26.39097744360902, 'AR95': 6.466165413533835, 'ARs': 58.22440087145969, 'ARm': 87.31138545953362, 'ARl': 89.70654121863801}), ('count', 12066)])

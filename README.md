@@ -14,7 +14,7 @@ This project performs object detection on aquatic images using Faster RCNN R101 
 [Detectron2 Model Zoo](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) as a backbone. 
 Our model was trained on the MODD2 dataset using this pre-trained model. We used data augmentation to increase the size of the training set and to make the model more robust.
 
-See our [paper](https://github.com/wolfm/Obstacle-Detection-442)
+See our [paper](https://github.com/wolfm/Obstacle-Detection-442/blob/master/EECS442_Course_Project_Final_Report.pdf)
 to learn more about the project.
 
 ## Dataset
@@ -24,7 +24,7 @@ We use the [MODD2](https://box.vicos.si/borja/viamaro/index.html) dataset create
 ## Purpose
 
 This project was created to train a model on a dataset that contained a largely monotonous foreground with weak distinguishing features for the
-objects. This is the first step in our plan to create a model to perform obstacle detection for an autonomous robot (see [MRover](https://mrover.org/) )in the desert.
+objects. This is the first step in our plan to create a model to perform obstacle detection for an autonomous robot (see [MRover](https://mrover.org/)) in the desert.
 
 ## Usage
 
